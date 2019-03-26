@@ -1,0 +1,24 @@
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+A: 
+The sort command parses the file, in this case commands.js, and sorts each line alphabetically.
+The wc command parses the file and returns the number of lines, words, and characters in the file.
+The uniq command parses the file and sorts each line in the file but only returns different lines; if there are two lines that occur right after each other that are the same this command removes the line so that there are no similarities. 
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+A: The command was: sort commands.js | uniq
+The output was that the data was sorted alphabetically, and then after the data was sorted any dupicate lines were removed.  So within the file, the word "break" occurs twice.  Once the data was sorted the words were next to each other.  Once the uniq command ran with the sorted data it removed the second "break" since it was a duplicate.
+
+6. Reverse a String 
+
+function reverseString(inputString) {
+
+    let arr = inputString.split(" ");
+    let temp = [];
+    arr.forEach((element) => {
+        word = element.split('');
+        reverse = word.reverse().join('');
+        temp.push(reverse);
+    })
+    let newString = temp.join(' ');
+    return newString;
+}
