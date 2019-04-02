@@ -43,14 +43,26 @@ const commandLibrary = {
     const file = fullPath[0];
     fs.readFile(file, (err, data) => {
       if (err) throw err;
-      done(data);
+      const text = data.toString('utf8');
+      const sliceText = text
+        .split('\n')
+        .slice(0, 10)
+        .join('\n');
+      const bufferText = Buffer.from(sliceText, 'utf8');
+      done(bufferText);
     });
   },
   tail(fullPath) {
     const files = fullPath[0];
     fs.readFile(files, (err, data) => {
       if (err) throw err;
-      done(data);
+      const text = data.toString('utf8');
+      const sliceText = text
+        .split('\n')
+        .slice(-10)
+        .join('\n');
+      const bufferText = Buffer.from(sliceText, 'utf8');
+      done(bufferText);
     });
   },
   error(userInput) {
